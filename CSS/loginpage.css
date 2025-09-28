@@ -1,0 +1,199 @@
+:root {
+    --color-primary: #5A1E9E;
+    /* Morado */
+    --color-secondary: #FDCA40;
+    /* Amarillo */
+    --color-text-light: #f4f4f4;
+    --color-text-dark: #333;
+    --color-background-dark: #1a1a1a;
+    --color-background-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-background-dark); /* Un negro menos puro, más agradable a la vista */
+    color: var(--color-text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Contenedor Principal del Formulario --- */
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* Espacio entre los elementos */
+}
+
+.logo {
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+
+/* --- Formulario y sus Elementos --- */
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 100px; /* Bordes completamente redondeados */
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-btn.google {
+    background-color: var(--color-background-light);
+    color: var(--color-text-dark);
+}
+
+.social-btn.google:hover {
+    background-color: var(--color-secondary);
+}
+
+.social-btn.apple {
+    background-color: var(--color-background-light);
+    color: var(--color-text-dark);
+}
+
+.social-btn.apple:hover {
+    background-color: var(--color-secondary);
+}
+
+/* --- Separador "o bien" --- */
+.separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #888;
+    font-size: 14px;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #333;
+}
+
+.separator span {
+    padding: 0 16px;
+}
+
+/* --- Campos de Entrada --- */
+.input-group {
+    width: 100%;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #EAEAEA;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]::placeholder {
+    color: #888;
+}
+
+input[type="email"]:focus {
+    outline: none;
+    border-color: #820D76; /* Color morado de tu marca */
+    box-shadow: 0 0 0 3px rgba(130, 13, 118, 0.3);
+}
+
+/* --- Botón de Envío y Enlaces --- */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #444;
+}
+
+.help-link {
+    color: #EAEAEA;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.help-link:hover {
+    color: var(--color-text-light);
+    text-decoration: underline;
+}
+
+/* --- Texto Legal --- */
+.legal-text {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+.legal-text a {
+    color: #AAA;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.legal-text a:hover {
+    color: var(--color-text-light);
+}
