@@ -708,11 +708,11 @@ section {
 /* Media Queries para responsividad */
 @media (max-width: 769px) {
     .nav-desktop {
-        display: none; /* Ocultar menú normal */
+        display: none;
     }
 
     .menu-toggle {
-        display: block; /* ✅ Mostrar hamburguesa solo en móvil */
+        display: block;
     }
 
     .mobile-menu {
@@ -730,5 +730,34 @@ section {
 
     .mobile-menu.active {
         display: flex;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .feature-card.big-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-card.big-card img {
+        border-radius: 15px 15px 0 0;
+        max-height: 200px;
+    }
+
+    .feature-text {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .feature-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .feature-text p {
+        font-size: 1rem;
     }
 }
