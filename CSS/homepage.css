@@ -3,6 +3,8 @@
     /* Morado */
     --color-secondary: #FDCA40;
     /* Amarillo */
+    --color-tertiary: #086788;
+    /* Azul */
     --color-text-light: #f4f4f4;
     --color-text-dark: #333;
     --color-background-dark: #1a1a1a;
@@ -147,9 +149,44 @@ section {
     color: var(--color-secondary);
 }
 
-.menu-toggle,
 .mobile-menu {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%; /* escondido a la derecha */
+    width: 250px;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: right 0.4s ease-in-out; /* animación */
+    z-index: 999;
+}
+
+/* Cuando está activo, entra */
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin: 1rem 0;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+}
+
+.menu-toggle {
+    display: none; /* ✅ Oculto en desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
 }
 
 
@@ -329,62 +366,42 @@ section {
     color: #e4e4e4;
 }
 
-/* 4. Sección de Galería de Imágenes */
-.gallery {
-    padding: 4rem 0;
-    background-color: #f8f8f8;
+/* 4. Sección de Planes */
+.plans {
+    padding: 4rem 2rem;
+    background: var(--color-background-dark);
     text-align: center;
 }
 
-.gallery h2 {
-    color: var(--color-primary);
-    margin-bottom: 2rem;
-}
-
-.gallery-grid {
+.plans-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.gallery-item {
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.plan-card {
+    background: #111;
+    color: var(--color-text-light);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
+.plan-card ul {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    text-align: left;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05);
+.plan-card:hover {
+    transform: translateY(-10px);
 }
 
-.gallery-slider {
-    width: 100%;
-    padding: 40px 0;
-}
-
-.swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.plan-card.featured {
+    border: 2px solid var(--color-primary);
 }
 
 
@@ -457,7 +474,103 @@ section {
     font-style: normal;
 }
 
-/* 6. Sección de CTA Final */
+.testimonial-pagination {
+    margin-top: 2rem;
+    position: relative;
+}
+
+/* Puntos en la sección Testimonios (amarillo) */
+#Testimonios .swiper-pagination-bullet {
+    background: var(--color-primary) !important;
+    opacity: 0.6;
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+#Testimonios .swiper-pagination-bullet-active {
+    background: var(--color-secondary) !important;
+    opacity: 1;
+}
+
+/* 6. Sección de Cómo funciona */
+.how-it-works {
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+}
+
+.step {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.step-bg {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: inherit;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+
+.step-content {
+    position: relative;
+    color: var(--color-text-light);
+    padding: 2rem;
+    z-index: 2;
+}
+
+.step-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+}
+
+/* Curvas entre pasos */
+.curve {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--color-tertiary);
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    transform: rotate(45deg);
+    position: relative;
+}
+
+.curve::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--color-tertiary);
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    top: -40px;
+    left: -10px;
+    transform: rotate(-45deg);
+    opacity: 0.6;
+}
+
+/* 7. Sección de CTA Final */
 .cta-final {
     display: flex;
     justify-content: center;
@@ -528,7 +641,7 @@ section {
     height: 40px;
 }
 
-/* NUEVOS ESTILOS: Pie de Página */
+/* 8. Pie de Página */
 .footer {
     background-color: #000;
     color: #bbb;
@@ -592,30 +705,20 @@ section {
     border-top: 1px solid #333;
 }
 
-
 /* Media Queries para responsividad */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     .nav-desktop {
-        display: none;
-        /* Ocultar la versión desktop */
+        display: none; /* Ocultar menú normal */
     }
 
     .menu-toggle {
-        display: block;
-        /* Mostrar hamburguesa */
-        font-size: 2rem;
-        background: none;
-        border: none;
-        color: var(--color-text-light);
-        cursor: pointer;
-        z-index: 1100;
+        display: block; /* ✅ Mostrar hamburguesa solo en móvil */
     }
 
     .mobile-menu {
         display: none;
         position: absolute;
         top: 100%;
-        /* justo debajo del navbar */
         left: 0;
         width: 100%;
         background: rgba(74, 0, 56, 0.95);
@@ -625,44 +728,7 @@ section {
         z-index: 1000;
     }
 
-    .mobile-menu a {
-        color: var(--color-text-light);
-        text-decoration: none;
-        margin: 0.7rem 0;
-        font-weight: 600;
-    }
-
-    .mobile-menu hr {
-        width: 80%;
-        border: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 1rem 0;
-    }
-
     .mobile-menu.active {
         display: flex;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-        /* 1 columna en móvil */
-    }
-
-    .feature-card.big-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .feature-card img {
-        width: 100%;
-        max-height: 220px;
-        /* más compacto en móvil */
-        border-radius: 15px 15px 0 0;
-        /* esquinas arriba */
-    }
-
-    .feature-text {
-        padding: 20px;
-        text-align: center;
     }
 }
